@@ -1,0 +1,56 @@
+﻿@model AuthAuthorization.Models.Patient
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row pt-4">
+    <div class="col-lg-6 col-md-8  mx-auto border p-3 mt-4 rounded-3">
+        <div class="row pt-4">
+            <div class="col-6">
+                <h2 class="text-primary">Edit Patient</h2>
+            </div>
+
+            <div class="col-6 text-end">
+
+                <a asp-action="Index" asp-controller="Patients" class="btn btn-secondary">
+                    Back
+                </a>
+            </div>
+        </div>
+
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <form asp-action="Edit">
+           
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group pt-3">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group pt-3">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group pt-3">
+                <label asp-for="CreatedDateTime" class="control-label"></label>
+                <input asp-for="CreatedDateTime" class="form-control" />
+                <span asp-validation-for="CreatedDateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group pt-3 d-flex justify-content-end">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
